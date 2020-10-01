@@ -70,6 +70,11 @@ export default {
   },
 
   methods: {
+    // Request Untuk Get Data Dummy dari reqes.in dulu
+    // tapi langsung 2 page dijadikan satu
+    // karena memeang task nya total record 3, 5, 10, dan semua
+    // jadi saya ambil lah semua aja karena memang di api itu
+    // hanya ada 12 items
     getData: function() {
       let currentObj = this
 
@@ -101,8 +106,9 @@ export default {
     goToDetail: function(pegawaiId) {
       let currentObj = this
 
-      currentObj.$router.push('/list/detail/' + pegawaiId)
-    }, // endo f goToDetail()
+      // kalau query tinggal ganti saja "params" jadi "query"
+      currentObj.$router.push({ path: '/list/detail', params: { pegawaiId: pegawaiId } })
+    }, // end of goToDetail()
 
     nextPage:function() {
       if((this.currentPage*this.pageSize) < this.pegawai.length) this.currentPage++;

@@ -1,5 +1,8 @@
 <template>
   <div>
+    <!-- Komunikasi Parent Ke Child -->
+    <!-- Nested Component -->
+    <!-- ada juga di setiap page yang butuh Alert Component -->
     <Alert class="mx-auto mt-5" style="width: 60vw;" v-if="alert" :color="alertColor" :text="alertText" />
 
     <div class="card mx-auto mt-5" style="width: 60vw;">

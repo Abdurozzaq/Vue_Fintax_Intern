@@ -34,8 +34,8 @@ export default {
       let currentObj = this
       // delete bearer token dari localstorage untuk logout
       localStorage.removeItem('userToken')
-
-      currentObj.$router.push('/')
+      
+      currentObj.$router.push({ path: '/' })
     }
   }
 }

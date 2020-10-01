@@ -1,4 +1,5 @@
 <template>
+  <!-- Simple Math (SUM) Calculator -->
   <div>
     <div class="card mx-auto mt-5" style="width: 60vw;">
       <div class="card-body">

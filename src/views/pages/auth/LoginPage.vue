@@ -1,5 +1,10 @@
 <template>
   <div>
+    <!-- Komunikasi Parent Ke Child -->
+    <!-- Nested Component -->
+    <!-- ada juga di setiap page yang butuh Alert Component -->
+    <Alert class="mx-auto mt-5" style="width: 60vw;" v-if="alert == true" :color="alertColor" :text="alertText" />
+
     <div class="card mx-auto mt-5" style="width: 60vw;">
       <div class="card-body">
         <h5 class="card-title">Login</h5>
@@ -23,7 +28,12 @@
 <script>
 import axios from 'axios'
 
+import Alert from'../../../components/Alert.vue'
 export default {
+  components: {
+    Alert
+  },
+
   data() {
     return {
       email: "eve.holt@reqres.in",
@@ -58,6 +68,7 @@ export default {
         // get bearer token nya
         const token = response.data.token
 
+        // Penggunaan LocalStorage
         // add bearer token to localstorage
         localStorage.setItem('userToken', token)
 
@@ -67,11 +78,20 @@ export default {
           axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + token
         }
 
-        currentObj.$router.push('/dash')
+        setTimeout(function() { 
+          currentObj.$router.push({ path: '/dash' }) 
+        }, 3000);
 
       })
       .catch(function (error) {
         console.log(error);
+
+        if (error.response) {
+          // alert
+          currentObj.alertColor = "danger"
+          currentObj.alertText = error.response.data.error
+          currentObj.alert = true
+        }
       });
     }
   }, // end of methods

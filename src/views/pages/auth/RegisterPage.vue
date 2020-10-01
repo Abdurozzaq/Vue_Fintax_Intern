@@ -1,6 +1,8 @@
 <template>
   <div>
-
+    <!-- Komunikasi Parent Ke Child -->
+    <!-- Nested Component -->
+    <!-- ada juga di setiap page yang butuh Alert Component -->
     <Alert class="mx-auto mt-5" style="width: 60vw;" v-if="alert == true" :color="alertColor" :text="alertText" />
 
     <div class="card mx-auto mt-5" style="width: 60vw;">
@@ -58,7 +60,7 @@ export default {
 
         // alert
         currentObj.alertColor = "success"
-        currentObj.alertText = "Berhasil Register!"
+        currentObj.alertText = "Berhasil Register! Redirecting..."
         currentObj.alert = true
 
         // get bearer token nya
@@ -73,7 +75,10 @@ export default {
           axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + token
         }
 
-        currentObj.$router.push('/dash')
+        setTimeout(function() { 
+          currentObj.$router.push({ path: '/dash' }) 
+        }, 3000);
+        
 
       })
       .catch(function (error) {

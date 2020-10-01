@@ -26,10 +26,8 @@ const pageTitle = (to, from, next) => {
 
 /**
  *
- * For Authenticated
- * And Not Authenticated
- *
- * Guard
+ * Navigation Guard
+ * Untuk Jika TerAutentiaksi Atau tidak TerAutentikasi
  */
 const ifAuthenticated = (to, from, next) => {
   if (localStorage.getItem('userToken')) {
@@ -48,6 +46,8 @@ const ifNotAuthenticated = (to, from, next) => {
   }
 }
 
+// Saya juga pakai Nested Route 
+// Biar mudah manage layouts
 const routes = [
   {
     path: "",
@@ -100,6 +100,11 @@ const routes = [
         component: Table,
         beforeEnter: multiguard([pageTitle, ifAuthenticated])
       },
+      // disini route untuk query. sebenarnya seperti ini namanya bukan route query sih,
+      // tapi route params. kenapa saya pakai route params bukan query. soalnya kalo query,
+      // di vue route nya tidak usah di apa-apakan normal aja. Jadi biar keliatan aja di route nya
+      // paling di route redirect atau push nya tinggal tambahkan params atau query
+      // penggunaannya ada pada page -- Table.vue baris 105 --
       {
         path: "/list/detail/:pegawaiId",
         meta: {
