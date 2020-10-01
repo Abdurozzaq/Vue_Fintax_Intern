@@ -21,10 +21,10 @@
           </tbody>
         </table>
         <div class="btn-group" role="group" aria-label="pageSize">
-          <button @click.prevent="pageSize = 3" type="button" class="btn btn-secondary">3</button>
-          <button @click.prevent="pageSize = 5" type="button" class="btn btn-secondary">5</button>
-          <button @click.prevent="pageSize = 10" type="button" class="btn btn-secondary">10</button>
-          <button  @click.prevent="pageSize = pegawai.length" type="button" class="btn btn-secondary">Semua</button>
+          <button @click.prevent="totalRecord3" type="button" class="btn btn-secondary">3</button>
+          <button @click.prevent="totalRecord5" type="button" class="btn btn-secondary">5</button>
+          <button @click.prevent="totalRecord10" type="button" class="btn btn-secondary">10</button>
+          <button  @click.prevent="totalRecordAll" type="button" class="btn btn-secondary">Semua</button>
         </div>
         <button v-if="pageSize < pegawai.length" type="button" class="btn btn-success ml-3" @click="prevPage">Previous</button> 
         <button v-if="pageSize < pegawai.length" type="button" class="btn btn-success ml-3" @click="nextPage">Next</button>
@@ -116,9 +116,35 @@ export default {
 
     prevPage:function() {
       if(this.currentPage > 1) this.currentPage--;
-    } // end of prevPage()
+    }, // end of prevPage()
 
+    totalRecord3: function() {
+      let currentObj = this
 
+      currentObj.pageSize = 3
+      currentObj.currentPage = 1
+    }, // end of totalRecord3
+
+    totalRecord5: function() {
+      let currentObj = this
+
+      currentObj.pageSize = 5
+      currentObj.currentPage = 1
+    }, // end of totalRecord5
+
+    totalRecord10: function() {
+      let currentObj = this
+
+      currentObj.pageSize = 10
+      currentObj.currentPage = 1
+    }, // end of totalRecord10
+
+    totalRecordAll: function() {
+      let currentObj = this
+
+      currentObj.pageSize = currentObj.pegawai.length
+      currentObj.currentPage = 1
+    }, // end of totalRecord3
   }, // end of methods
 
   mounted: function () {
