@@ -106,6 +106,7 @@ const routes = [
       // paling di route redirect atau push nya tinggal tambahkan params atau query
       // penggunaannya ada pada page -- Table.vue baris 105 --
       {
+        name: 'detailPegawai',
         path: "/list/detail/:pegawaiId",
         meta: {
             title: 'Detail Pegawai - App Pegawaian',

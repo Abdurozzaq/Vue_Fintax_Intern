@@ -107,7 +107,8 @@ export default {
       let currentObj = this
 
       // kalau query tinggal ganti saja "params" jadi "query"
-      currentObj.$router.push({ path: '/list/detail', params: { pegawaiId: pegawaiId } })
+      // tambahan: untuk redirect params harus pakai name 
+      currentObj.$router.push({ name: 'detailPegawai', params: { pegawaiId: pegawaiId } })
     }, // end of goToDetail()
 
     nextPage:function() {
